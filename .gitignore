@@ -3,8 +3,6 @@ __pycache__/
 *.py[cod]
 *$py.class
 
-*.pdf
-*.docx
 .idea/
 .vscode/
 # C extensions
@@ -147,3 +145,5 @@ media
 static
 
 .idea/
+.docx
+.pdf

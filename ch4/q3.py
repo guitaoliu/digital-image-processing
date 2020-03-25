@@ -1,21 +1,19 @@
 import cv2
 import numpy as np
 import matplotlib.pyplot as plt
+from skimage.filters import unsharp_mask
 
+def unsharp_masking(img, do_plt=True):
+    img_out = unsharp_mask(img, radius=5)
 
-def unsharp_masking(img, k=1, do_plt=True):
-    img_blur = cv2.GaussianBlur(img, (5, 5), 0)
-    img_edge = img - img_blur
-    img_out = img + k * img_edge
+    # img_blur = cv2.GaussianBlur(img, (5, 5), 0)
+    # img_out = cv2.addWeighted(img, 2, img_blur, -1, 0)
     if do_plt:
         plt.figure()
-        plt.subplot(131)
+        plt.subplot(121)
         plt.imshow(img, cmap='gray')
         plt.title('origin image')
-        plt.subplot(132)
-        plt.imshow(img_edge, cmap='gray')
-        plt.title('difference between origin image and the blurred one')
-        plt.subplot(133)
+        plt.subplot(122)
         plt.title('enhanced image')
         plt.imshow(img_out, cmap='gray')
         plt.show()
@@ -24,10 +22,12 @@ def unsharp_masking(img, k=1, do_plt=True):
 def high_pass_filter(img):
     img_sobel_x_edge_detect = cv2.Sobel(img, cv2.CV_64F, 1, 0, ksize=3)
     img_sobel_y_edge_detect = cv2.Sobel(img, cv2.CV_64F, 0, 1, ksize=3)
-    img_sobel_edge_detect = cv2.convertScaleAbs(img_sobel_x_edge_detect + img_sobel_y_edge_detect)
+    img_sobel_edge_detect = cv2.convertScaleAbs(
+        np.sqrt(img_sobel_x_edge_detect**2 + img_sobel_y_edge_detect**2)
+    )
 
     img_laplace_edge_detect = cv2.convertScaleAbs(cv2.Laplacian(img, cv2.CV_64F, ksize=3))
-    img_canny_edge_detect = cv2.Canny(img, 50, 150)
+    img_canny_edge_detect = cv2.convertScaleAbs(cv2.Canny(img, 50, 150))
 
     plt.figure()
     plt.subplot(131)
@@ -40,7 +40,6 @@ def high_pass_filter(img):
     plt.title('Canny edge detect')
     plt.imshow(img_canny_edge_detect, cmap='gray')
     plt.show()
-
 
 
 if __name__ == '__main__':
