@@ -40,7 +40,7 @@ def laplace(p, q):
     return laplace_filter
 
 
-def unsharp(p, q, radius=20, k=1):
+def unsharp(p, q, radius=50, k=1):
     _, GHPF = gaussian(p, q, radius)
     return 1 + k * GHPF
 
@@ -66,9 +66,9 @@ if __name__ == '__main__':
         BLPF, BHPF = butterworth(p, q, radius=radius)
         BLPFs.append(BLPF)
         BHPFs.append(BHPF)
-    show_filters(GLPFs)
-    show_filters(GHPFs)
-    show_filters(BLPFs)
-    show_filters(BHPFs)
-
+    # show_filters(GLPFs)
+    # show_filters(GHPFs)
+    # show_filters(BLPFs)
+    # show_filters(BHPFs)
+    #
     show_filters([laplace(p, q)])
