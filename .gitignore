@@ -144,6 +144,5 @@ cython_debug/
 media
 static
 
-.idea/
-.docx
-.pdf
+*.docx
+*.pdf
