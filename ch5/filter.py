@@ -57,18 +57,18 @@ def show_filters(filters):
 
 if __name__ == '__main__':
     p, q = 512, 512
-    # GLPFs, GHPFs = [], []
-    # BLPFs, BHPFs = [], []
-    # for radius in range(25, 100, 25):
-    #     GLPF, GHPF = gaussian(p, q, radius)
-    #     GLPFs.append(GLPF)
-    #     GHPFs.append(GHPF)
-    #     BLPF, BHPF = butterworth(p, q, radius=radius)
-    #     BLPFs.append(BLPF)
-    #     BHPFs.append(BHPF)
-    # show_filters(GLPFs)
-    # show_filters(GHPFs)
-    # show_filters(BLPFs)
-    # show_filters(BHPFs)
+    GLPFs, GHPFs = [], []
+    BLPFs, BHPFs = [], []
+    for radius in range(25, 100, 25):
+        GLPF, GHPF = gaussian(p, q, radius)
+        GLPFs.append(GLPF)
+        GHPFs.append(GHPF)
+        BLPF, BHPF = butterworth(p, q, radius=radius)
+        BLPFs.append(BLPF)
+        BHPFs.append(BHPF)
+    show_filters(GLPFs)
+    show_filters(GHPFs)
+    show_filters(BLPFs)
+    show_filters(BHPFs)
 
     show_filters([laplace(p, q)])

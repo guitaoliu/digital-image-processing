@@ -155,6 +155,6 @@ def unsharp_process():
 
 
 if __name__ == '__main__':
-    # gaussian_butterworth()
-    # laplace_image_process()
+    gaussian_butterworth()
+    laplace_image_process()
     unsharp_process()
