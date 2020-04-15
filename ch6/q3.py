@@ -72,6 +72,18 @@ if __name__ == '__main__':
     lena_gaussian_wiener_recover = wiener(lena_gaussian_noised.copy(), move_h, k=0.002)
     lena_gaussian_squares_recover = constrained_least_squares(lena_gaussian_noised.copy(), move_h, gama=0.005)
 
+    plt.figure(figsize=(12, 5))
+    plt.subplot(131)
+    plt.imshow(lena, cmap='gray')
+    plt.title('Original Image')
+    plt.subplot(132)
+    plt.imshow(lena_moved, cmap='gray')
+    plt.title('Moved Image')
+    plt.subplot(133)
+    plt.imshow(lena_gaussian_noised, cmap='gray')
+    plt.title('Gaussian Noised Moved Image')
+    plt.show()
+
     plt.figure(figsize=(12, 8))
     plt.subplot(231)
     plt.imshow(lena_moved, cmap='gray')

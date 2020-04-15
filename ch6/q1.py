@@ -48,11 +48,9 @@ def draw_recovers():
     draw_comparing_img(img, img_noised, recover_img_lib.mean_blur())
     draw_comparing_img(img, img_noised, recover_img_lib.geometric_mean_blur())
     draw_comparing_img(img, img_noised, recover_img_lib.harmonic_mean_blur())
+    draw_comparing_img(img, img_noised, recover_img_lib.median_blur())
     draw_comparing_img(img, img_noised, recover_img_lib.min_blur())
     draw_comparing_img(img, img_noised, recover_img_lib.max_blur())
-    draw_comparing_img(img, img_noised, recover_img_lib.mean_blur())
-    # draw_comparing_img(img, img_noised, recover_img_lib.inverse_harmonic_blur(q=1))
-    draw_comparing_img(img, img_noised, recover_img_lib.median_blur())
     draw_comparing_img(img, img_noised, recover_img_lib.midpoint_blur())
     draw_comparing_img(img, img_noised, recover_img_lib.alpha_blur(d=4))
 

@@ -64,11 +64,12 @@ def different_blur_function_test(lena, lena_salt_blur, lena_pepper_blur, lena_sa
         lena_salt_pepper_blur.harmonic_mean_blur(),
     )
 
+    q = 1
     draw_comparison_plot(
         lena,
-        lena_salt_blur.inverse_harmonic_blur(q=-1),
-        lena_pepper_blur.inverse_harmonic_blur(q=-1),
-        lena_salt_pepper_blur.inverse_harmonic_blur(q=-1),
+        lena_salt_blur.inverse_harmonic_blur(q),
+        lena_pepper_blur.inverse_harmonic_blur(q),
+        lena_salt_pepper_blur.inverse_harmonic_blur(q),
     )
 
     draw_comparison_plot(
@@ -115,7 +116,14 @@ if __name__ == '__main__':
     lena_pepper_blur = BlurLibrary(lena_pepper, 3)
     lena_salt_pepper_blur = BlurLibrary(lena_salt_pepper, 3)
 
-    # different_blur_function_test(lena, lena_salt_blur, lena_pepper_blur, lena_salt_pepper_blur)
+    draw_comparison_plot(
+        lena,
+        lena_salt,
+        lena_pepper,
+        lena_salt_pepper
+    )
+
+    different_blur_function_test(lena, lena_salt_blur, lena_pepper_blur, lena_salt_pepper_blur)
 
     for q in range(-1, 2, 1):
         draw_comparison_plot(
